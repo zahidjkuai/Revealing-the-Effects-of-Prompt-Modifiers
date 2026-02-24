@@ -9,9 +9,15 @@ modifiers is quantified using a bipolar softmax scoring mechanism over CLIP cosi
 The interface offers structured prompt control: users pick a semantic attribute with a strength slider, a subject, and an art style with its own strength, while a negative prompt filters artifacts and advanced options (seed, sampler, scheduler, resolution) ensure full reproducibility. On the right, a UMAP view projects all generated images into a 2D latent space, clustering color‑coded thumbnails by attribute and subject to reveal how different prompt settings shift semantics at a glance.
 
 ----------------------------------------------------------------------------------------------------
-For both the cute cat and cute dog examples, SDXL decodes the modifier cute almost purely as an appearance cue: large eyes, soft fur, compact proportions, clean and well‑lit presentation, but with a neutral closed‑mouth facial expression. This means the images look extremely cute yet emotionally calm, not explicitly happy or sad, and the elevated sad score in the radar plot reflects CLIP’s difficulty distinguishing calm from mildly sad rather than a truly sad generation; the third figure confirms this by showing that calm‑like expressions sit in a region where our radar has no dedicated calm attribute, exposing a weakness of CLIP’s emotional sensitivity rather than a failure of the diffusion model.
-![Screenshot_2026_02_22-9](https://github.com/user-attachments/assets/f9251f5b-9f3d-4943-bb2b-33a24e592b94)
-![Screenshot_2026_02_22-7](https://github.com/user-attachments/assets/3613bc28-1a2b-4e0b-a11f-b08cb741849e)
-![Screenshot_2026_02_22-5](https://github.com/user-attachments/assets/3892d21a-f057-4d33-b11f-fc8e2783f29e)
-![Screenshot_2026_02_22-3](https://github.com/user-attachments/assets/1cd87ada-67d3-4d5f-97de-531f37c862a6)
-![Screenshot_2026_02_22-1](https://github.com/user-attachments/assets/8532bd9e-f814-4360-9aa6-32347c45be39)
+For both the cute cat (figure 3) and cute dog (figure 3) examples, SDXL decodes the modifier cute almost purely as an appearance cue: large eyes, soft fur, compact proportions, clean and well‑lit presentation, but with a neutral closed‑mouth facial expression. This means the images look extremely cute yet emotionally calm, not explicitly happy or sad, and the elevated sad score in the radar plot reflects CLIP’s difficulty distinguishing calm from mildly sad rather than a truly sad generation; the (figure 4) confirms this by showing that calm‑like expressions sit in a region where our radar has no dedicated calm attribute, exposing a weakness of CLIP’s emotional sensitivity rather than a failure of the diffusion model. 
+
+![Screenshot_2026_02_22-1](https://github.com/user-attachments/assets/57900517-f4e7-47b0-a42b-d8e7e0a34088)
+**Figure 2 – Attribute‑guided a (cute:3.4) dog image generation and its Cosine Similarity Radar Chart of the Attributes** 
+![Screenshot_2026_02_22-3](https://github.com/user-attachments/assets/0e7ffb7f-0a8f-4500-9597-5ed114dfa8c3)
+**Figure 3 – Attribute‑guided a (cute:3.4) cat image generation and its Cosine Similarity Radar Chart of the Attributes** 
+![Screenshot_2026_02_22-5](https://github.com/user-attachments/assets/d2a443d4-e254-4f87-b6cf-fe2ece6d93d3)
+**Figure 4 – Attribute‑guided a (cute:3.4) cat image generation and its Cosine Similarity Radar Chart of the Attributes**
+
+This verifies that, SDXL appears subject‑independent in the “cute cat” and “cute dog” experiments because the cute modifier is encoded as a global direction in the CLIP text embedding space that does not depend on whether the subject token is “cat” or “dog”. During conditioning, this attribute direction steers the diffusion process toward a consistent set of appearance features—large eyes, soft fur, compact proportions, clean grooming—while the subject token only determines species‑specific anatomy and texture. As a result, both animals share almost identical pose and expression: a calm, neutral, closed‑mouth look that CLIP sometimes misinterprets as partly sad, revealing that SDXL separates what is generated (subject) from how it looks (modifier), and that the cute direction itself carries no emotional valence across subjects.
+
+----------------------------------------------------------------------------------------------------
