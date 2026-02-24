@@ -20,6 +20,8 @@ prompt sensitivity, attribute interference, and embedding structure in generativ
 image models.
 
 ![Screenshot_2026_02_22-12](https://github.com/user-attachments/assets/9bbd77cb-40b7-46b2-82b5-cb7d59336f84)
+The interface offers structured prompt control: users pick a semantic attribute with a strength slider, a subject, and an art style with its own strength, while a negative prompt filters artifacts and advanced options (seed, sampler, scheduler, resolution) ensure full reproducibility. On the right, a UMAP view projects all generated images into a 2D latent space, clustering color‑coded thumbnails by attribute and subject to reveal how different prompt settings shift semantics at a glance.
+
 ![Screenshot_2026_02_22-9](https://github.com/user-attachments/assets/f9251f5b-9f3d-4943-bb2b-33a24e592b94)
 ![Screenshot_2026_02_22-7](https://github.com/user-attachments/assets/3613bc28-1a2b-4e0b-a11f-b08cb741849e)
 ![Screenshot_2026_02_22-5](https://github.com/user-attachments/assets/3892d21a-f057-4d33-b11f-fc8e2783f29e)
